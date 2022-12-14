@@ -45,7 +45,7 @@ const Evaluate = () => {
   };
 
   const getEvaluations = () => {
-    fetch('/api/evaluation')
+    fetch('https://backend-tfffc.herokuapp.com/api/evaluation')
       .then((response) => response.json())
       .then((data) => {
         setStudents(data);
@@ -99,7 +99,7 @@ const Evaluate = () => {
 
   const handleSubmitEvaluation = (event) => {
     event.preventDefault();
-    fetch('/api/evaluation', {
+    fetch('https://backend-tfffc.herokuapp.com/api/evaluation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -116,7 +116,7 @@ const Evaluate = () => {
   };
 
   const handleDeleteEvaluation = () => {
-    fetch('/api/evaluation', {
+    fetch('https://backend-tfffc.herokuapp.com/api/evaluation', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

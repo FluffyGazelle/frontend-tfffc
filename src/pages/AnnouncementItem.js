@@ -38,7 +38,7 @@ const AnnouncementItem = ({ ann, isPermitted, getAnnouncements }) => {
 
   const handleEdit = () => {
     setIsLoading(true);
-    fetch('/api/announcement', {
+    fetch('https://backend-tfffc.herokuapp.com/api/announcement', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: ann._id, title, content }),
@@ -53,7 +53,7 @@ const AnnouncementItem = ({ ann, isPermitted, getAnnouncements }) => {
 
   const handleDelete = () => {
     setIsLoading(true);
-    fetch('/api/announcement', {
+    fetch('https://backend-tfffc.herokuapp.com/api/announcement', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: ann._id }),

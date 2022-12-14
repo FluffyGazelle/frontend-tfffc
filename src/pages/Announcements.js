@@ -12,7 +12,7 @@ const Announcements = () => {
   const isPermittedToEdit = userRole === 'Teacher';
 
   const getAnnouncements = () => {
-    fetch('/api/announcement')
+    fetch('https://backend-tfffc.herokuapp.com/api/announcement')
       .then((response) => response.json())
       .then((data) => {
         setAnnouncements(data);

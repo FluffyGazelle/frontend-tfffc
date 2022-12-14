@@ -17,7 +17,7 @@ const Evaluation = () => {
   };
 
   const handleSubmitEvaluation = () => {
-    fetch('/api/evaluation', {
+    fetch('https://backend-tfffc.herokuapp.com/api/evaluation', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -31,7 +31,7 @@ const Evaluation = () => {
     });
   };
   const getStudentEvaluation = () => {
-    fetch('/api/evaluation/student', {
+    fetch('https://backend-tfffc.herokuapp.com/api/evaluation/student', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
