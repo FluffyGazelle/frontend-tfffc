@@ -1,6 +1,4 @@
 import '../index.scss';
-import React from 'react';
-import logo from '../img/mt-0966-logo.png';
 import { Link } from 'react-router-dom';
 import one from '../img/1.jpg';
 import two from '../img/2.jpg';
@@ -8,17 +6,53 @@ import three from '../img/3.jpg';
 import four from '../img/4.jpg';
 import five from '../img/5.jpg';
 import six from '../img/6.jpg';
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import { useAuthContext } from '../hooks/useAuthContext';
+
+function stringToColor(string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+    },
+    children: `${name[0]}${name[1]}`,
+  };
+}
+
+
+
+
+
 const Teacher = () => {
+  const { user } = useAuthContext();
+  const email = user?.email.toString() || 'su';
   return (
     <div className="stuPage">
       <div className="introImage"></div>
       <div className="nav">
-        <Link to="/" id="link">
-          {' '}
-          <img src={logo} alt="" />{' '}
-        </Link>
 
-        <Link id="link"> Home </Link>
+      <Avatar {...stringAvatar(email)} />
+        <Link to="/" id="link"> Home </Link>
 
         <Link to="/announcementAdd" id="link">
           Add Announcement{' '}
@@ -26,21 +60,17 @@ const Teacher = () => {
         <Link to="/announcements" id="link">
           Current Announcements{' '}
         </Link>
-        <Link to="/" id="link">
-          {' '}
-          Add Event{' '}
-        </Link>
         <Link to="/Evaluate" id="link">
           Evaluate Students{' '}
         </Link>
-        <Link to="/" id="link">
-          {' '}
-          Change Student{' '}
-        </Link>
-        <Link to="/addTraining" id="link">
-          {' '}
-          Add Training{' '}
-        </Link>
+                            
+                            <Link to="/selection" id="link">Change Student</Link>
+                            <Link to="/teacher/events" id="link"> Events </Link>
+                            <Link to="/" id="link"> Student Development </Link>
+                            
+                            <Link to="/teacher/skills" id="link"> Skills </Link>
+                            <Link to="/teacher/trainings" id="link"> Trainings </Link>
+
       </div>
       <div className="skillContainer">
         <div className="skills">
@@ -72,42 +102,37 @@ const Teacher = () => {
         </div>
       </div>
 
-      <div className="skillContainer">
-        <div className="skills">
-          <h1>Student Name's Skill Points</h1>
-          <div id="img1">
-            <h3> Skill Name 1</h3>
-            <img src={one} alt="" />
-          </div>
-          <div id="img2">
-            <h3> Skill Name 2</h3>
-            <img src={two} alt="" />
-          </div>
-          <div id="img3">
-            <h3> Skill Name 3</h3>
-            <img src={three} alt="" />
-          </div>
-          <div id="img4">
-            <h3> Skill Name 4</h3>
-            <img src={four} alt="" />
-          </div>
-          <div id="img5">
-            <h3> Skill Name 5</h3>
-            <img src={five} alt="" />
-          </div>
-          <div id="img6">
-            <h3> Skill Name 6</h3>
-            <img src={six} alt="" />
-          </div>
-        </div>
-      </div>
-      <div id="space">
-        <div className="link">
-          <Link to="/" className="skillLink" id="link">
-            Change Skills
-          </Link>
-        </div>
-      </div>
+                       
+                        <div className="skillContainer">
+                        <div className="skills">
+                            <h1>Student Name's Skill Points</h1>
+                            <div id="img1">
+                                <h3> Skill Name 1</h3>
+                                <img src={one} alt=""/>
+                            </div>
+                            <div id="img2">
+                                <h3> Skill Name 2</h3>
+                                <img src={two} alt=""/>
+                            </div>
+                            <div id="img3">
+                                <h3> Skill Name 3</h3>
+                                <img src={three} alt=""/>
+                            </div>
+                            <div id="img4">
+                                <h3> Skill Name 4</h3>
+                                <img src={four} alt=""/>
+                            </div>
+                            <div id="img5">
+                                <h3> Skill Name 5</h3>
+                                <img src={five} alt=""/>
+                            </div>
+                            <div id="img6">
+                                <h3> Skill Name 6</h3>
+                                <img src={six} alt=""/>
+                            </div>
+                            
+                        </div>
+                    </div>
 
       <div className="announcementsContainer">
         <div className="announcements">

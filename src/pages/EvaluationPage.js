@@ -1,18 +1,18 @@
 import Navbar from '../components/Navbar';
-import Announcements from '../components/Announcements';
+import Evaluation from '../components/Evaluation';
 
-const AnnouncementPage = () => {
+const EvaluationPage = () => {
   return (
     <div>
       <Navbar />
       <h1
         style={{ textAlign: 'center', marginBottom: '20px', marginTop: '50px' }}
       >
-        Announcements
+        
       </h1>
-      <Announcements />
+      <Evaluation />
     </div>
   );
 };
 
-export default AnnouncementPage;
+export default EvaluationPage;
