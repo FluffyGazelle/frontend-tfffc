@@ -8,7 +8,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
-  const [assignedemail, setAssignedemail] = useState('');
+  let assignedemail = "none";
   const { signup, error, isLoading } = useSignup();
 
   const handleSubmit = async (e) => {
@@ -44,13 +44,7 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <label>assignedEmail: (You cannot edit this)</label>
-        <input
-          type="text"
-          onChange={(e) => setAssignedemail(e.target.value)}
-          value={'none'}
-          readOnly
-        />
+
         <p>I am a</p>
         <select
           onChange={(e) => setRole(e.target.value)}
